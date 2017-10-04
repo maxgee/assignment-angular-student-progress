@@ -1,0 +1,48 @@
+<p class="first_p">
+    <b>Student:</b> Max Gee <br>
+    <b>Email:</b> maxgee@me.com <br>
+    <b>Performance</b>
+</p>
+<h3 *ngIf="!outputPercent">Must Have Assignments to Evaluate Performance</h3>
+<table *ngIf="outputPercent">
+  <tr>
+    <th>Points</th>
+    <th>Points Possible</th>
+    <th>Perecnt</th>
+    <th>Grade</th>
+  </tr>
+  <tr>
+    <td>{{totalPoints}}</td>
+    <td>{{pointsPossible}}</td>
+    <td>{{outputPercent}}%</td>
+    <td>{{letterGrade}}</td>
+  </tr>
+</table>
+<hr>
+<p class="first_p">
+  <b>Add Assignment</b><br>
+    <label>Assignment Name: </label>
+    <input type = "text" [(ngModel)]="new_Assignment.assignementName" placeholder="Name"><br>
+    <label>Scored Points: </label>
+    <input type = "number"[(ngModel)]="new_Assignment.pointsScored" placeholder="Scored Points"><br>
+    <label>Points Possible: </label>
+    <input type = "number" [(ngModel)]="new_Assignment.pointsPossible" placeholder="Points Possible"><br>
+    <button (click) ="pushAssignment()">Add Assignment</button>
+</p>
+<b>Assignment</b><br>
+<h3 *ngIf="Assigenmen_array.length === 0">Must Have Assignments to Show Progress</h3>
+
+<table *ngIf="Assigenmen_array.length > 0">
+  <tr>
+    <th>Assignment Name</th>
+    <th>Points Scored</th>
+    <th>Points Possible</th>
+    <th>Percent</th>
+  </tr>
+  <tr *ngFor="let assignment of Assigenmen_array">
+    <td>{{assignment.assignementName}}</td>
+    <td>{{assignment.pointsScored}}</td>
+    <td>{{assignment.pointsPossible}}</td>
+    <td>{{assignment.percent}}%</td>
+  </tr>
+</table>
