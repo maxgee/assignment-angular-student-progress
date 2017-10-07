@@ -3,8 +3,8 @@
     <b>Email:</b> maxgee@me.com <br>
     <b>Performance</b>
 </p>
-<h3 *ngIf="!outputPercent">Must Have Assignments to Evaluate Performance</h3>
-<table *ngIf="outputPercent">
+<h3 *ngIf="!performanceClass.totalPoints">Must Have Assignments to Evaluate Performance</h3>
+<table *ngIf="performanceClass.totalPoints">
   <tr>
     <th>Points</th>
     <th>Points Possible</th>
@@ -12,10 +12,10 @@
     <th>Grade</th>
   </tr>
   <tr>
-    <td>{{totalPoints}}</td>
-    <td>{{pointsPossible}}</td>
-    <td>{{outputPercent}}%</td>
-    <td>{{letterGrade}}</td>
+    <td>{{performanceClass.totalPoints}}</td>
+    <td>{{performanceClass.possiblePoints}}</td>
+    <td>{{performanceClass.percent | percent}}</td>
+    <td>{{performanceClass.percent | letterGrade}}</td>
   </tr>
 </table>
 <hr>
@@ -43,6 +43,6 @@
     <td>{{assignment.assignementName}}</td>
     <td>{{assignment.pointsScored}}</td>
     <td>{{assignment.pointsPossible}}</td>
-    <td>{{assignment.percent}}%</td>
+    <td>{{assignment.percent | percent}}</td>
   </tr>
 </table>
